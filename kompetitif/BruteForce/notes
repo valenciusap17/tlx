@@ -1,0 +1,61 @@
+#include <iostream>
+#include <array>
+#include <string>
+#include <iomanip>
+#include <cstdio>
+#include <vector>
+#include <map>
+#include <bits/stdc++.h>
+using namespace std;
+
+int arr[6];
+
+int main() {
+    int T, N;
+    cin >> T;
+    for (int i = 1; i <= T; i++) {
+        cin >> N;
+        for (int j = 1; j <= N; j++) {
+            cin >> arr[j];
+            // cout << arr[j];
+        }
+        sort(arr, arr+N+1);
+        for (int j = 1; j <= N; j++) {
+            cout << arr[j] << "\n";
+        }
+
+        for (int j = 1; j <= N; j++) {
+            // cout << "nilai j" << j << "\n";
+            // cout << arr[j] << "\n";
+            for (int k = j+1; k <= N; k++){
+                // cout << "nilai k" << k << "\n";
+                // if (j==3) cout << "nih" << arr[j];
+                cout << "nilai arr j: " << arr[j] << "\n";
+                cout << "nilai j: " << j << "\n";
+                cout << "nilai arr k: " << arr[k] << "\n";
+                cout << "nilai k: " << k << "\n";
+
+                if (arr[j] >= 3 ) {
+                    arr[j] -= 3;
+                } else if (arr[j] >=1  && arr[k] >= 1) {
+                    arr[j] -= 1;
+                    arr[k] -= 1;
+                } else if ( arr[k] >= 3){
+                    arr[k] -= 3;
+                }
+                cout << "nilai arr k sesudah: " << arr[k] << "\n";
+                cout << "\n";
+            }
+        }
+        bool check = true;
+        for (int j = 1; j <= N; j++) {
+            cout << "index: " << j << "hasil: " << arr[j] << "\n";
+            if (arr[j] != 0) {
+                check = false;
+            }
+        }
+        cout << "\n";
+        if (check) cout << "YES\n";
+        else cout << "NO\n";
+    }
+}
